@@ -1,0 +1,85 @@
+1  ls
+    2  man man
+    3  unminimize
+    4  apt-get update
+    5  apt-get install man-db
+    6  apt-get install nano -y
+    7  man
+    8  man man
+    9  ls
+   10  pwd
+   11  file
+   12  touch abc
+   13  ls
+   14  mkdir abc
+   15  rm abc
+   16  mkdir abc
+   17  ls
+   18  cd abc
+   19  touch x
+   20  touch y
+   21  touch t1
+   22  touch t2
+   23  touch t3
+   24  touch t
+   25  ls
+   26  rm t
+   27  ls
+   28  mkdir t
+   29  ls
+   30  t
+   31  cd t
+   32  touch a
+   33  touch b
+   34  cd home
+   35  cd root
+   36  cd abc
+   37  cd home
+   38  cd /home
+   39  mkdir zz
+   40  ls
+   41  cd zz
+   42  touch x
+   43  ls
+   44  cd home
+   45  cd /home
+   46  ls
+   47  mkdir abc
+   48  touch x
+   49  touch x=y
+   50  touch y
+   51  touch t1
+   52  touch t2
+   53  touch t3
+   54  touch t
+   55  rm t
+   56  ls
+   57  rm x=y
+   58  ls
+   59  rm t1
+   60  rmt2
+   61  rm t2
+   62  rm t3
+   63  ls
+   64  rm x
+   65  rm y
+   66  ls
+   67  cd abc
+   68  touch x
+   69  touch y
+   70  touch t1
+   71  touch t2
+   72  touch t3
+   73  mkdir t
+   74  cd t
+   75  touch a
+   76  touch b
+   77  ls
+   78  cd home/
+   79  cd home
+   80  cd /home
+   81  ls
+   82  mkdir tt
+   83  apt-get install tree
+   84  tree
+   85  history

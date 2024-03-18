@@ -1,0 +1,57 @@
+Problema 6
+# # A
+# # val = int(input ("Dati un numar "))
+# # p=1
+# # while val != 0:
+# #     p = p * val # socoteste produsul numerelor din sir
+# #     val = int(input ("Dati un numar"))
+# # count=0
+# # while p !=0:
+# #     if p % 10 == 0:
+# #         count += 1
+# #     p = p / 10
+# # print(count)
+# #
+# # # B
+# # def este_prim(num):
+# #
+# #      for e in range(2, num):
+# #          if num % e == 0 :
+# #              return False
+# #          else:
+# #              return True
+# #
+# # l = [ 1 , 2 , 3 , 4 , 8]
+# # contor = 1
+# # maxim = 0
+# # for i in range(len(l)-1):
+# #     if not este_prim(l[i] + l[i + 1]):
+# #          contor = 1
+# #     else:
+# #          contor += 1
+# #     if contor >= maxim:
+# #          maxim = contor
+# #     print(maxim)
+
+
+
+# #Problema 1 a
+# #  n = int(input('n='))
+# #  if n > 1:
+# # 	print(2)
+# # for e in range(3, n, 2):
+# #     if este_prim(e):
+# #         print(e)
+
+Problema 1 b
+l = [ 1 , 2 , 3 , 4 , 8]
+# #     contor = 1
+# #     maxim = 0
+# #     for i in range(len(l)-1):
+# #      if (l[i] < l[i + 1]):
+# #          contor += 1
+# #      else:
+# #          contor = 1
+# #      if contor >= maxim:
+# #          maxim = contor
+# #     print(maxim)

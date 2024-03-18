@@ -1,0 +1,40 @@
+Prozedulare Programmierung(Curs FP)
+
+
+-Comentariu: #
+-Multiplikation:*
+-ridicare la putere:**
+-nu exista ++ si --
+-tip boolean cu litere mari True si Fals(de folosit True si Fals nu 1 si 0)
+-in C++:int a <=> in Python x = 1// x=Name 1 = Objekt vom Type-Int
+-nu specificam tipuri 
+-else if <=> elif expression2
+
+
+Tipuri secventiale de date
+-daca vrem sa scriem string multiline folosim """ 
+					      abc
+					      abc
+					      """
+-listele se definesc cu [......]
+-len()	 // lungimea listei
+-cu plus se poate face concatenare in lista dar trebuie si []
+-Tuple se defineste (...) si nu se poate modifica
+-x[n:m]//afiseaza subsecventa de la m la n
+-x[n:m:k]//afiseaza subsecventa de la m la n cu pasu k
+-packing pui in tuplet
+-unpacking x, y, z=t//afiseaza toate din tuplet la x,y,z si merge daca vrem doar primu is ultimu x, _, y=t
+-copie la o lista 
+l1=[1, 2, 3]
+l2=l1[:]
+
+l2[0]="?"
+print(l1, l2)
+
+definire functie
+def <name>([P1,...,Pn]):
+#cod
+[return<rezultat>]
+			
+-la o functie sa scriem o mica descriere s aintelgem ce face		          
+-daca avem parametru optional tot ce apare in dreapta lui trebuie sa fie parametru optional
