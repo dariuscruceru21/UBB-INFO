@@ -1,6 +1,0 @@
-# ninja log v5
-5	863	7313586368040848	CMakeFiles/OOP.dir/HelloWorld/main.cpp.obj	f9f4100d426d329
-16	841	7318686338839023	build.ninja	88ae98d9e3273b61
-1594	2175	7313635746751658	OOP.exe	e6ce7fb64e9dc9cb
-8	1590	7313635741145515	CMakeFiles/OOP.dir/HelloWorld/ex2.cpp.obj	1758817d1f9077a1
-4	521	7313602845963725	CMakeFiles/OOP.dir/HelloWorld/ex1.cpp.obj	e35b75d2d0d38a68
