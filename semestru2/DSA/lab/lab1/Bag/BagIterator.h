@@ -8,8 +8,8 @@ class BagIterator
 private:
 	const Bag& bag;
 	//TODO  - Representation
-    int index;//index pentru perechi
-    int frq_index;//index pentru frecventa
+    int index;//index for pairs
+    int frq_index;//index for frequecy
 
 	BagIterator(const Bag& c);
 public:

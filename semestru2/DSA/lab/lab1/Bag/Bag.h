@@ -12,8 +12,9 @@ class Bag {
 private:
 	//TODO - Representation
         int capacity;
-        int lenght;
-        std::pair<TElem,int>* elements;////declara un pointer la un vector dinamic de perechi de tip (element, frecventa)
+        int lenght;//length of the dynamic vector
+        int nrElemente;//number of elements in the bag
+        std::pair<TElem,int>* elements;//declares a pointer to a dynamic vector of elements type pair(elem, frequency)
 
 	//DO NOT CHANGE THIS PART
 	friend class BagIterator;
@@ -42,6 +43,10 @@ public:
 
 	//checks if the bag is empty
 	bool isEmpty() const;
+
+    void resizeUp();
+
+    void resizeDown();
 
 	//destructor
 	~Bag();

@@ -1,6 +1,7 @@
 #include <exception>
 #include "BagIterator.h"
 #include "Bag.h"
+#include <stdexcept>
 
 
 using namespace std;
@@ -9,43 +10,47 @@ using namespace std;
 BagIterator::BagIterator(const Bag& c): bag(c)
 {
 	//TODO - Implementation
-    index = 0;
-    frq_index = 1;
+    this->index = 0;
+    this->frq_index = 1;
 }
 
-void BagIterator::first() {
+void BagIterator::first() {//sets the index two the first element of the dynamic array. Complexity: Theta(1)
 	//TODO - Implementation
-    index=0;
-    frq_index=1;
+    //Complexity: Theta(1)
+    this->index=0;
+    this->frq_index=1;
 }
 
 
-void BagIterator::next() {
+void BagIterator::next() {//iterates to the next element from the bag.
     //TODO - Implementation
-    exception excep;
-    if (valid() && frq_index == bag.elements[index].second) {
-        index++;
-        frq_index = 1;
-    } else if (frq_index != bag.elements[index].second && valid())
-                 frq_index++;
-
-}
-bool BagIterator::valid() const {
-	//TODO - Implementation
-    if(bag.isEmpty())
-        return false;
-    else{
-        if(index < bag.lenght && index>=0)
-            return true;
+    //Complexity: Theta(1)
+    if (this->valid() == false) {
+        throw std::runtime_error("Iterator is not valid");
     }
-	return false;
+    // Move to the next element if the current frequency is exhausted
+    if (this->frq_index < this->bag.elements[this->index].second) {
+        this->frq_index++;
+    } else {
+        this->index++;
+        this->frq_index = 1; // Reset the frequency index
+    }
+
+}
+
+bool BagIterator::valid() const {//checks if the current index is a valid one. Complexity: Theta(1)
+	//TODO - Implementation
+    //Complexity: Theta(1)
+    return this->index >= 0 && this->index < this->bag.lenght;
 }
 
 
-TElem BagIterator::getCurrent() const
+TElem BagIterator::getCurrent() const//gets the current value of the pair the index is on. Complexity: Theta(1)
 {
 	//TODO - Implementation
-    if(valid())
-        return bag.elements[index].first;
-	return NULL_TELEM 
+    //Complexity :Theta(1)
+    if(this->valid())
+        return this->bag.elements[this->index].first;
+
+    throw std::runtime_error("Iterator is not valid");
 }

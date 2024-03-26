@@ -7,111 +7,131 @@ using namespace std;
 
 Bag::Bag() {
 	//TODO - Implementation
-    capacity=5;
-    lenght=0;
-    elements=new std::pair<TElem,int>[capacity];
+    this->capacity = 5;
+    this->lenght = 0;
+    this->nrElemente = 0;
+    this->elements = new std::pair<TElem,int>[this->capacity];
 
 
 }
 
 
-void Bag::add(TElem elem) {//de refacut
+void Bag::add(TElem elem) {
 	//TODO - Implementation
+    //Best-Case Complexity:Theta(1)
+    //Worst-Case Complexity:O(n)
+    //Average-Case Complexity:O(n)
+    if(this->isEmpty())//if the bag is empty it makes a pair and sets the length to 1
+    {
+      this->nrElemente ++;
+      this->elements[this->lenght++] = make_pair(elem, 1);
+      return;
+    }
 
-    this->iterator().first();
-    if(isEmpty()){//daca bagul e gol
-        elements[lenght]=std::make_pair(elem,1);
-        lenght++;
-    }
-    else{
-        if(lenght < capacity && search(elem)){//problemas
-            elements[this->iterator().index].second++;
-            lenght++;
-        }
-        else {
-            if (lenght == capacity) {
-                capacity = capacity * 2;
-                pair<TElem, int> *new_elements = new std::pair<TElem,int>[capacity];
-                this->iterator().first();
-                while (this->iterator().valid())
-                    new_elements[this->iterator().index] = elements[this->iterator().index];//copiem elementele din vectorul vechi in cel nou cu capactitatea dublata
-                delete[] elements;
-                elements = new_elements;
+    for(int index = 0; index < this->lenght; index++) {
+        if (this->elements[index].first == elem) {
+            if(this->lenght < this->capacity)
+            { this->elements[index].second += 1;
+                this->nrElemente += 1;
+                return;
             }
-            if(search(elem))
-            {   elements[this->iterator().index].second++;
-                lenght++;}
-            else
-            {
-                lenght++;
-                elements[lenght]= make_pair(elem,1);
+            else{
+                resizeUp();
+                this->elements[index].second += 1;
+                this->nrElemente += 1;
+                return;
             }
+
         }
     }
+
+    if(this->lenght == this->capacity)
+        this->resizeUp();
+
+    this->nrElemente += 1;
+    this->elements[lenght] = make_pair(elem,1);//if the element is not found it increments the length and adds the new pair
+    this->lenght++;
 }
 
 
 bool Bag::remove(TElem elem) {
 	//TODO - Implementation
-    exception excep;
-    if(isEmpty())
-        throw excep;
+    //Best-Case Complexity:Theta(1)
+    //Worst-Case Complexity:O(n)
+    //Average-Case Complexity:O(n)
+    if (this->isEmpty() == true)
+        return false;
 
-    this->iterator().first();//setam iteratorul la incepu
-    if(!isEmpty()){
-            if(search(elem)){
-                if(elements[this->iterator().index].second > 1)
-                {
-                    elements[this->iterator().index].second--;
-                    lenght--;
-                    return true;
-                }
 
-                else if(elements[this->iterator().index].second==1)
-                    {
-                        elements[this->iterator().index]=elements[this->iterator().index+1];
-                        lenght--;
-                        return true;
-                    }
+    if(this->search(elem)==false)
+        return false;
+
+    for(int index = 0; index < this->lenght; index++){
+        if(this->elements[index].first == elem) {
+            if (this->elements[index].second > 1) {
+                this->elements[index].second -= 1;
+                this->nrElemente -= 1;
+                if(this->lenght < this->capacity/4)
+                    resizeDown();
+                return true;
+            } else {
+                for (int j = index; j < this->lenght - 1; j++)
+                    elements[j] = elements[j + 1];
+                this->nrElemente --;
+                this->lenght -= 1;
+                if(this->lenght < this->capacity/4)
+                    resizeDown();
+                return true;
+
             }
+        }
     }
-
-    return false;
 }
 
 
 bool Bag::search(TElem elem) const {
 	//TODO - Implementation
-    this->iterator().first();
-    if(!isEmpty()){
-        while(this->iterator().valid()){
-            if(elements[this->iterator().index].first==elem)
-                return true;
-            this->iterator().next();
-        }
-    }
-	return false; 
+    //Best-Case Complexity:Theta(1)
+    //Worst-Case Complexity:O(n)
+    //Average-Case Complexity:O(n)
+    for(int index = 0; index < lenght; index++)
+        if(this->elements[index].first== elem)
+            return true;
+    return false;
+
 }
 
 int Bag::nrOccurrences(TElem elem) const {
 	//TODO - Implementation
-    if(search(elem))
-        return elements[this->iterator().index].second;
-	return 0; 
+    //Best-Case Complexity:Theta(1)
+    //Worst-Case Complexity:O(n)
+    //Average-Case Complexity:O(n)
+    if(this->isEmpty() == true)
+        return 0;
+
+    for(int index = 0; index < this->lenght; index++)
+        if(this->elements[index].first == elem)
+            return elements[index].second;
+
+
+    //if element not found return 0
+    return 0;
 }
 
 
 int Bag::size() const {
-	//TODO - Implementation
-    return lenght;
+    //TODO - Implementation
+    //Complexity:Theta(1)
+    if(this->lenght > 0)
+        return this->nrElemente;
+    return 0;
 }
 
 
 bool Bag::isEmpty() const {
-	//TODO - Implementation
-    if(lenght==0)
-        return true;
-	return false;
+    //TODO - Implementation
+    //Complexity:Theta(1)
+    return this->lenght == 0;
 }
 
 BagIterator Bag::iterator() const {
@@ -121,6 +141,33 @@ BagIterator Bag::iterator() const {
 
 Bag::~Bag() {
     //TODO - Implementation
-    delete [] elements;
+    //Complexity:O(n)
+    delete[] this->elements;
+}
+
+
+void Bag::resizeUp() {
+    //Complexity:O(n)
+    int newCapacity = this->capacity * 2;
+    std::pair<TElem, int>* newElements = new std::pair<TElem, int>[newCapacity];
+    for (int index = 0; index < this->lenght; index++) {
+        newElements[index] = this->elements[index];
+    }
+    delete[] this->elements;
+    this->elements = newElements;
+    this->capacity = newCapacity;
+}
+
+
+void Bag::resizeDown() {
+    //Complexity:O(n)
+    this->capacity /= 2;
+    std::pair<TElem, int>* newElements = new std::pair<TElem, int>[this->capacity];
+    for (int index = 0; index < this->lenght; index++) {
+        newElements[index] = this->elements[index];
+    }
+    delete[] this->elements;
+    this->elements = newElements;
+
 }
 

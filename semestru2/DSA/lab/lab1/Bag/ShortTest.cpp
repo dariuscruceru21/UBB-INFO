@@ -16,7 +16,7 @@ void testAll() {
 	b.add(11);
 	b.add(-3);
 	assert(b.size() == 7);
-	/*assert(b.search(10) == true);
+	assert(b.search(10) == true);
 	assert(b.search(16) == false);
 	assert(b.nrOccurrences(1) == 2);
 	assert(b.nrOccurrences(7) == 1);
@@ -29,5 +29,5 @@ void testAll() {
 	while (it.valid()) {
 		TElem e = it.getCurrent();
 		it.next();
-	}*/
+	}
 }
